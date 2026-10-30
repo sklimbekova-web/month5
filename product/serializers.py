@@ -6,7 +6,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Review
-    fields = '__all__'  # или ['id', 'text', 'stars', 'product']
+    fields = '__all__'  
 
 
 
