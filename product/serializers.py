@@ -2,7 +2,9 @@ from rest_framework import serializers
 from .models import Category, Product, Review
 
 
+
 class ReviewSerializer(serializers.ModelSerializer):
+  stars = serializers.IntegerField(min_value=1, max_value=5)
 
   class Meta:
     model = Review
@@ -36,6 +38,7 @@ class CategoryWithCountSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
+  name = serializers.CharField(min_length=2, max_length=100)
 
   class Meta:
     model = Category
@@ -43,6 +46,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+  price = serializers.DecimalField(max_digits=10, decimal_places=2, min_value=0.01)
+  title = serializers.CharField(min_length=2, max_length=255)
 
   class Meta:
     model = Product
